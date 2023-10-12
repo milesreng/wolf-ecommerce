@@ -7,7 +7,13 @@ export const Header = () => {
   return (
     <header>
       <div className='w-screen flex flex-row justify-between px-4 md:px-8 py-4 bg-forest border-b-2 border-forest-900 text-default-bg'>
-        <Link to='/' className='text-2xl'>WolfShop</Link>
+        <Link to='/' className='text-2xl flex flex-row my-auto gap-2'>
+          <div>
+            <img src='../public/wolf-howl-navbar.svg' alt=''
+              className='overflow-hidden w-12' />
+          </div>
+          <span className='my-auto hidden md:block'>wolfshop</span>
+        </Link>
         <div className='flex flex-row gap-4 md:gap-8 align-middle'>
           <Link to='/cart'
             className='flex flex-row gap-2 my-auto'>
