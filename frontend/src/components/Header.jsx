@@ -1,21 +1,22 @@
 import React from 'react'
 // import { Navbar, Nav, Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import { FaShoppingCart, FaUser } from 'react-icons/fa'
 
 export const Header = () => {
   return (
     <header>
-      <div className="w-full flex flex-row justify-between px-4 md:px-8 py-4 bg-forest border-b-2 border-forest-900 text-cloud-50">
-        <h1 className="text-2xl">WolfShop</h1>
+      <div className='w-full flex flex-row justify-between px-4 md:px-8 py-4 bg-forest border-b-2 border-forest-900 text-cloud-50'>
+        <Link to='/' className='text-2xl'>WolfShop</Link>
         <div className='flex flex-row gap-4 md:gap-8 align-middle'>
-          <a href='/cart'
+          <Link to='/cart'
             className='flex flex-row gap-2 my-auto'>
             <FaShoppingCart className='my-auto' /> Cart
-          </a>
-          <a href='/login'
+          </Link>
+          <Link to='/login'
             className='flex flex-row gap-2 my-auto'>
             <FaUser className='my-auto' /> Log in
-          </a>
+          </Link>
         </div>
       </div>
       {/* <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
