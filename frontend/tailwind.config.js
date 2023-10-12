@@ -50,6 +50,9 @@ export default {
       gray: colors.gray,
       black: colors.black
     },
+    fontFamily: {
+      'sans': ['Open Sans', 'sans']
+    },
     extend: {},
   },
   plugins: [],

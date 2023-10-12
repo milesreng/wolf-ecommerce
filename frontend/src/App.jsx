@@ -6,7 +6,7 @@ import './index.css'
 
 const App = () => {
   return (
-    <div className='h-screen justify-between flex flex-col bg-default-bg'>
+    <div className='h-screen justify-between flex flex-col bg-default-bg font-sans'>
       <Header />
       <main className='py-3'>
         <div>

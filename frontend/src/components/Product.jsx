@@ -10,11 +10,11 @@ const Product = ({ product }) => {
         </a>
         <div>
           <a href={`/product/${product._id}`}
-            className='font-bold'>
+            className='font-bold text-sm'>
             {product.name}
           </a>
         </div>
-        <div>
+        <div className='text-sm text-cloud-600'>
         ${product.price}
         </div>
       </div>
