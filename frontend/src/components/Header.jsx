@@ -9,7 +9,7 @@ export const Header = () => {
       <div className='w-screen flex flex-row justify-between px-4 md:px-8 py-4 bg-forest border-b-2 border-forest-900 text-default-bg'>
         <Link to='/' className='text-2xl flex flex-row my-auto gap-2'>
           <div>
-            <img src='../public/wolf-howl-navbar.svg' alt=''
+            <img src='../wolf-howl-navbar.svg' alt=''
               className='overflow-hidden w-12' />
           </div>
           <span className='my-auto hidden md:block'>wolfshop</span>

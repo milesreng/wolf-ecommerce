@@ -1,12 +1,22 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useParams, Link } from 'react-router-dom'
+import axios from 'axios'
 import Rating from '../components/Rating'
-import products from '../products'
 
 const ProductScreen = () => {
+  const [product, setProduct] = useState({})
   const productId = useParams().id
-  const product = products.find(p => p._id === productId)
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/products/${productId}`)
+      setProduct(data)
+    }
+
+    fetchProduct()
+
+  }, [productId])
 
   return (
     <div className='px-4 py-1 w-screen'>
