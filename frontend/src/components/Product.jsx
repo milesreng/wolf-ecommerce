@@ -12,7 +12,7 @@ const Product = ({ product }) => {
         </Link>
         <div className='basis-1/3 md:basis-1/6'>
           <Link to={`/product/${product._id}`}
-            className='font-bold text-md lg:text-sm'>
+            className='font-bold text-md lg:text-sm text-forest-900'>
             {product.name}
           </Link>
         </div>
