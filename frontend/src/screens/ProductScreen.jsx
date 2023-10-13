@@ -2,6 +2,8 @@ import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useGetProductDetailsQuery } from '../slices/productsApiSlice'
 import Rating from '../components/Rating'
+import Message from '../components/Message'
+import Loader from '../components/Loader'
 
 const ProductScreen = () => {
   const { id: productId } = useParams()
@@ -14,9 +16,13 @@ const ProductScreen = () => {
           Back to home
       </Link>
       {isLoading && !error && (
-        <h1>Loading...</h1>
+        <div className='mx-auto h-1/2 pt-64'>
+          <Loader className='mx-auto' />  
+        </div>
       )}
-      {error && <p>{error?.data?.message || error.error}</p>}
+      {error && <Message variant='danger'>
+        {error?.data?.message || error.error}
+      </Message>}
       {!isLoading && !error && (
         <div className='flex flex-col md:flex-row justify-between pt-8 w-11/12 mx-auto gap-4 md:gap-0'>
           <div className='basis-full md:basis-2/3'>
