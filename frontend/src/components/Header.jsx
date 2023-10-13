@@ -12,7 +12,7 @@ export const Header = () => {
             <img src='../wolf-howl-navbar.svg' alt=''
               className='overflow-hidden w-12' />
           </div>
-          <span className='my-auto hidden md:block'>wolfshop</span>
+          <span className='my-auto hidden md:block'>the store</span>
         </Link>
         <div className='flex flex-row gap-4 md:gap-8 align-middle'>
           <Link to='/cart'

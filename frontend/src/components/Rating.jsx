@@ -5,7 +5,7 @@ import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa'
 const Rating = ({ value, text }) => {
   return (
     <div className='flex flex-row gap-2'>
-      <div className='flex flex-row my-auto text-forest-600 text-sm lg:text-md'>
+      <div className='flex flex-row my-auto text-forest-600 text-sm md:text-xs'>
         <span>
           { value >= 1 ? <FaStar /> : value >= 0.5 ? <FaStarHalfAlt /> : <FaRegStar />}
         </span>
@@ -23,7 +23,7 @@ const Rating = ({ value, text }) => {
         </span>
       </div>
       
-      <span className='my-auto text-xs lg:text-sm'>{ text && text }</span>
+      <span className='my-auto text-xs'>{ text && text }</span>
     </div>
   )
 }
