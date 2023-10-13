@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useGetProductDetailsQuery } from '../slices/productsApiSlice'
 import Rating from '../components/Rating'
@@ -7,7 +8,42 @@ import Loader from '../components/Loader'
 
 const ProductScreen = () => {
   const { id: productId } = useParams()
+
+  const [qty, setQty] = useState(1)
+
   const { data: product, isLoading, error } = useGetProductDetailsQuery(productId)
+  const [canOrder, setCanOrder] = useState(true)
+
+  const handleValidQty = (e) => {
+    setQty(Number(e.target.value))
+    if (qty > product.countInStock) {
+      setCanOrder(false)
+    } else if (!canOrder) {
+      setCanOrder(true)
+    }
+  }
+
+  const handleSubtractQty = () => {
+    if (qty > 1) {
+      setQty(qty - 1)
+    }
+
+    if (qty - 1 <= product.countInStock) {
+      setCanOrder(true)
+    }
+  }
+
+  const handleAddQty = () => {
+    if (qty >= product.countInStock) {
+      setCanOrder(false)
+    }
+
+    setQty(qty + 1)
+  }
+
+  const handleAddToCart = () => {
+    console.log('added to cart')
+  }
   
   return (
     <div className='px-4 py-1 w-screen'>
@@ -41,15 +77,29 @@ const ProductScreen = () => {
             <p className='hidden md:block md:border-b-2 md:border-forest-50 pb-2'>Price: ${product.price}</p>
             <h3 className='text-sm my-auto'>Status: 
               <strong> {product.countInStock > 0 ? 
-                <span className='text-forest'>in stock</span> : 
+                <span className='text-forest'>{product.countInStock} in stock</span> : 
                 <span className='text-brick'>out of stock</span>}
               </strong>
             </h3>
-            <button className={`rounded-md border-forest-500 bg-forest-50 border-2 text-xs px-2 py-1 w-1/4 md:w-full lg:w-2/3 md:mx-auto hover:bg-forest-100 transition-all duration-200 ${product.countInStock === 0 ? 'opacity-50' : 'opacity-100'}`}
-              type=''
-              disabled={product.countInStock === 0}>
-            Add to cart
-            </button>
+            {product.countInStock > 0 && (
+              <div className='flex flex-col w-11/12 mx-auto justify-around'>
+                {/* <span className='pr-2'>Qty</span> */}
+                <div className='flex flex-row gap-1 text-center my-auto font-mono mx-auto w-3/4 justify-around'>
+                  <button onClick={handleSubtractQty}
+                    className='pr-1 font-bold bg-cloud-50 text-cloud-800 hover:bg-cloud-100 h-full w-4 rounded-l cursor-pointer outline-none duration-200 transition-colors pl-1 basis-1/3'>–</button>
+                  <input type='number' value={qty} onChange={handleValidQty}
+                    className='w-1/6 text-center rounded-sm font-sans basis-1/3' />
+                  <button onClick={handleAddQty}
+                    className='pr-1 font-bold bg-cloud-50 text-cloud-800 hover:bg-cloud-100 h-full w-4 rounded-r cursor-pointer outline-none duration-200 transition-colors basis-1/3'>+</button>
+                </div>
+                <button className={`md:mt-4 mx-auto rounded-md border-forest-500 bg-forest-50 border-2 text-xs px-2 py-1 w-1/4 md:w-full lg:w-2/3 hover:bg-forest-100 transition-all duration-200 ${!canOrder || product.countInStock === 0 ? 'opacity-50' : 'opacity-100'}`}
+                  disabled={product.countInStock === 0 || !canOrder}
+                  onClick={handleAddToCart}>
+                  Add to cart
+                </button>
+              </div>
+                
+            )}
           </div>
         </div>
       )}

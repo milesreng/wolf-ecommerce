@@ -51,7 +51,8 @@ export default {
       black: colors.black
     },
     fontFamily: {
-      'sans': ['Open Sans', 'sans']
+      'sans': ['Open Sans', 'sans'],
+      'mono': ['mono']
     },
     extend: {},
   },
