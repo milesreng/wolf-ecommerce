@@ -17,11 +17,11 @@ export const Header = () => {
         <div className='flex flex-row gap-4 md:gap-8 align-middle'>
           <Link to='/cart'
             className='flex flex-row gap-2 my-auto'>
-            <FaShoppingCart className='my-auto mx-4 md:mx-0' /> <span className='hidden md:block'>Cart</span>
+            <FaShoppingCart className='my-auto' /> Cart
           </Link>
           <Link to='/login'
             className='flex flex-row gap-2 my-auto'>
-            <FaUser className='my-auto mx-4 md:mx-0' /> <span className='hidden md:block'>Log in</span>
+            <FaUser className='my-auto' /> Log in
           </Link>
         </div>
       </div>

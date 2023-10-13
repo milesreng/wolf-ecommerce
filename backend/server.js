@@ -2,6 +2,8 @@
 const express  = require('express')
 require('dotenv').config()
 const config = require('./config/db')
+const middleware = require('./middleware/errorMiddleware')
+const productRoutes = require('./routes/productRoutes')
 
 const PORT = process.env.PORT || 3001
 
@@ -12,15 +14,9 @@ app.get('/', (request, response) => {
   response.send('api is running')
 })
 
-app.get('/api/products', (request, response) => {
-  response.json(products)
-})
+app.use('/api/products', productRoutes)
 
-app.get('/api/products/:id', (request, response) => {
-  const product = products.find((p) => p._id === request.params.id)
-  response.json(product)
-})
-
-
+app.use(middleware.notFound)
+app.use(middleware.errorHandler)
 
 app.listen(PORT, () => console.log(`server running on ${PORT}`))
