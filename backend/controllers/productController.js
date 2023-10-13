@@ -1,4 +1,4 @@
-import Product from '../models/productModel'
+const Product = require('../models/productModel')
 
 // @desc get all products
 // @route GET /api/products
