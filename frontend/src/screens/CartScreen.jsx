@@ -22,6 +22,10 @@ const CartScreen = () => {
     dispatch(removeFromCart(id))
   }
 
+  const handleCheckout = () => {
+    navigate('/login?redirect=/shipping')
+  }
+
   return (
     <div className='w-screen mx-auto pb-4'>
       <div className='w-11/12 mx-auto'>
@@ -93,7 +97,8 @@ const CartScreen = () => {
                 <p>Total:</p>
                 <p>${(Number(cartItems.reduce((a, b) => a + Number(b.price * b.qty), 0).toFixed(2)) + Number(cartItems.reduce((a, b) => a + Number(b.price * b.qty * 0.12), 0).toFixed(2)) + Number((cartItems.reduce((a, b) => a + b.qty, 0) > 10 ? 0 : 10).toFixed(2))).toFixed(2)}</p>
               </div>
-              <button className='w-full text-center my-auto py-2 border border-forest rounded-sm bg-forest-50 hover:bg-forest-100 transition-colors duration-200'>To checkout</button>
+              <button onClick={handleCheckout}
+                className='w-full text-center my-auto py-2 border border-forest rounded-sm bg-forest-50 hover:bg-forest-100 transition-colors duration-200'>To checkout</button>
               <div>
                 <p></p>
               </div>
