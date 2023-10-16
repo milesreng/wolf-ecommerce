@@ -48,6 +48,7 @@ export default {
       },
       slate: colors.slate,
       gray: colors.gray,
+      red: colors.red,
       black: colors.black
     },
     fontFamily: {

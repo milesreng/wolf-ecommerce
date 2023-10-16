@@ -6,10 +6,10 @@ import './index.css'
 
 const App = () => {
   return (
-    <div className='h-screen justify-between flex flex-col bg-default-bg font-sans'>
+    <div className='h-full justify-between flex flex-col bg-default-bg font-sans'>
       <Header />
       <main className='py-3 flex flex-col h-full'>
-        <div className='self-start'>
+        <div>
           <Outlet />
         </div>
       </main>
